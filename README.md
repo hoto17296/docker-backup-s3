@@ -11,9 +11,16 @@ Docker image for backup to Amazon S3.
 - Run container with `cron` command
 
 ## Environment variables
-TODO
+| Key | Default Value | Description |
+|---|---|---|
+| TZ | `UTC` |  |
+| SCHEDULE | **Required** |  |
+| S3_URL | **Required** |  |
+| SYNC_OPTIONS | None | See [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html) |
 
 ## `docker-compose.yml` example
+In this example, `foo-volume` is backed up to `s3://backup/foo` daily at 21:00 JST.
+
 ``` yml:docker-compose.yml
 version: '3'
 
@@ -22,9 +29,10 @@ services:
   backup-s3:
     image: hoto17296/backup-s3
     environment:
+      TZ: Asia/Tokyo
+      SCHEDULE: '0 21 * * *'
       AWS_ACCESS_KEY_ID: XXXXXXXXXXXXXXXXXXXX
       AWS_SECRET_ACCESS_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      SCHEDULE: '0 21 * * *'
       S3_URL: s3://backup/foo
       SYNC_OPTIONS: --delete
     volumes:
