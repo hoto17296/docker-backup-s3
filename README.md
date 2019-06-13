@@ -17,6 +17,7 @@ Docker image for backup to Amazon S3.
 | SCHEDULE | **Required** |  |
 | S3_URL | **Required** |  |
 | SYNC_OPTIONS | None | See [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html) |
+| INCLUDE_FILES<br/>EXCLUDE_FILES | None | Short hand to `--include` and `--exclude` options. It should be a comma separated string. |
 
 ## `docker-compose.yml` example
 In this example, `foo-volume` is backed up to `s3://backup/foo` daily at 21:00 JST.
@@ -35,6 +36,7 @@ services:
       AWS_SECRET_ACCESS_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       S3_URL: s3://backup/foo
       SYNC_OPTIONS: --delete
+      EXCLUDE_FILES: '*.git/*, *.ipynb_checkpoints/*'
     volumes:
       - foo-volume:/src
     command: cron

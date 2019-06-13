@@ -1,3 +1,5 @@
+#!/bin/ash -eu
+
 abort () {
   echo "Error: $@" 1>&2
   exit 1
