@@ -14,9 +14,9 @@ Docker image for backup to Amazon S3.
 | Key | Default Value | Description |
 |---|---|---|
 | TZ | `UTC` |  |
-| SCHEDULE | **Required** |  |
+| SCHEDULE | **Required** | It should be a Crontab schedule format. |
 | S3_URL | **Required** |  |
-| SYNC_OPTIONS | None | See [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html) |
+| SYNC_OPTIONS | None | See [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html). |
 | INCLUDE_FILES<br/>EXCLUDE_FILES | None | Short hand to `--include` and `--exclude` options. It should be a comma separated string. |
 
 ## `docker-compose.yml` example
