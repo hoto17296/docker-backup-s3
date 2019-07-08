@@ -11,4 +11,3 @@ aws s3 sync \
   $(build_file_opts '--include' "${INCLUDE_FILES}") \
   $(build_file_opts '--exclude' "${EXCLUDE_FILES}") \
   ${SYNC_OPTIONS}
-

@@ -8,7 +8,10 @@ Docker image for backup to Amazon S3.
     - Mount AWS credentials file to `/root/.aws`
     - Attach IAM role to EC2 Instance (if using Amazon EC2 or Amazon ECS)
 - Set some required environment variables (see below)
-- Run container with `cron` command
+
+Then, run container with default command to start crond.
+
+If you want to sync immediately, specify `sh /sync.sh` to command.
 
 ## Environment variables
 | Key | Default Value | Description |
@@ -39,5 +42,4 @@ services:
       EXCLUDE_FILES: '*.git/*, *.ipynb_checkpoints/*'
     volumes:
       - foo-volume:/src
-    command: cron
 ```
