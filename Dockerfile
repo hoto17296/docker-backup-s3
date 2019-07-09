@@ -14,4 +14,4 @@ RUN apk --no-cache add groff \
   && pip install awscli
 
 ADD sync.sh /
-ENV SCHEDULED_COMMAND sh /sync.sh
+ENV SCHEDULED_COMMAND sh /sync.sh
